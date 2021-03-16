@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Заказ школьного питания</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        Выбор класса <br>
+        {{ form.klass(class="form-control", type="string") }}<br>
+    </p>
+    <hr>
+    <p>
+        Буфет<br>
+        {{ form.bufet(class="form-control")}}<br>
+        {% for error in form.bufet.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        Горячее питание<br>
+        {{form.hot_meal(class="form-control")}}<br>
+        {% for error in form.hot_meal.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>{{form.submit()}}</p>
+</form>
+{% endblock %}
